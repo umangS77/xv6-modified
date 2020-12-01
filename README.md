@@ -2,7 +2,8 @@
 
 ## Overview
 
-#### Modified the xv6 operating system developed by MIT and added some features like waitx, ps and setPriority syscalls. Scheduling techniques implemented are FCFS(First-Come-First-Serve),PBS(Priority Based Scheduling) and MLFQ(Multi-Level FeedbackQueue).  
+#### Modified the xv6 operating system developed by MIT and added some features like waitx, ps and setPriority syscalls.  
+#### Scheduling techniques implemented are FCFS(First-Come-First-Serve), PBS(Priority Based Scheduling) and MLFQ(Multi-Level FeedbackQueue).  
 
 ### Execution
 ```
@@ -15,22 +16,21 @@ where SCHEDULER FLAG can take values: DEFAULT / FCFS / PBS / MLFQ.
 ## Task 1 : Implemented waitx and ps  
 
 ### waitx syscall  
-
+waitx syscall returns the time spent in running and waiting by a particular process. Both
+rtime and wtime are given in terms of ticks defined in xv6.  
+  
 Syntax:
 ```
 time <command>
 ```
-waitx syscall returns the time spent in running and waiting by a particular process. Both
-rtime and wtime are given in terms of ticks defined in xv6.  
 
 ### ps (user program)  
+ps user program gives information such as pid, priority, state, rtime, wtime, n_run, current_queue, ticks in all queues, etc. about all active processes.  
 
 Syntax:
 ```
 ps
 ```
-ps user program gives information such as pid, priority, state, rtime, wtime, n_run, current_queue, ticks in all queues, etc. about all active processes.  
-
 
 ## Task 2 : Implement FCFS, PBS, MLFQ scheduling policies  
 
@@ -56,7 +56,7 @@ Processes are allocated different queues. Each queue has a different priority. A
 
 ### Functions
 
-● struct proc *getFront(int qIdx) - get front process of queue
-● struct proc *popFront(int qIdx) - pop from front of the queue
-● void pushBack(int qIdx, struct proc *p) - push process into the queue
-● void updateStatsAndAging() - takes care of aging of process in MLFQ and shifting between queues.
+● struct proc *getFront(int qIdx) - get front process of queue  
+● struct proc *popFront(int qIdx) - pop from front of the queue  
+● void pushBack(int qIdx, struct proc *p) - push process into the queue  
+● void updateStatsAndAging() - takes care of aging of process in MLFQ and shifting between queues.  
